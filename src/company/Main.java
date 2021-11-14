@@ -186,7 +186,7 @@ public class Main {
         callLogsDeque.forEach(calllog -> System.out.println(calllog.getPhoneNumber()));
         System.out.println("Удаляем новый элемент из очереди: " + callLogsDeque.pollLast().getPhoneNumber());
         callLogsDeque.forEach(calllog -> System.out.println(calllog.getPhoneNumber()));
-        System.out.println("Посмотреть первый элемент в деке: " + callLogsDeque.peek().getPhoneNumber());
+        System.out.println("Снова посмотреть первый элемент в деке: " + callLogsDeque.peek().getPhoneNumber());
     }
 
     public static void displaySortedCallLogPairs(ArrayList<Pair<Contact, ArrayList<CallLog>>> pairs) {
