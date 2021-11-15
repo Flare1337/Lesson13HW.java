@@ -108,32 +108,32 @@ public class Main {
 
         System.out.println("\n 4 задание");
         HashSet<Message> uniqueMessages = new HashSet<>(messages);
-        HashSet<CallLog> uniqueСallogs = new HashSet<>(logs);
+        HashSet<CallLog> uniqueСallLogs = new HashSet<>(logs);
         HashSet<Contact> uniqueContacts = new HashSet<>(contacts);
 
         System.out.println("Просто вывод всех объектов");
-        iterativeCollectionFinder(contacts, messages, uniqueСallogs);
+        iterativeCollectionFinder(contacts, messages, uniqueСallLogs);
         System.out.println("\n Уникальные объекты \n");
-        iterativeCollectionFinder(uniqueContacts, uniqueMessages, uniqueСallogs);
+        iterativeCollectionFinder(uniqueContacts, uniqueMessages, uniqueСallLogs);
         // Или проверить есть ли в методе дубликаты с помощью метода который написал в аудитории, пример
         // А может и к лучшему что не пришлось так решать
         // System.out.println("Имеет дубликаты? " + Main.isCallLogCollectionHasDuplicates(logs));
-        // System.out.println("Имеет дубликаты? x2 " + Main.isCallLogCollectionHasDuplicates(uniqueСallogs));
+        // System.out.println("Имеет дубликаты? x2 " + Main.isCallLogCollectionHasDuplicates(uniqueСallLogs));
         System.out.println("\n 5 задание");
         Map<Contact, ArrayList<Message>> contactMessagesMap = groupMessagesByContact(uniqueContacts, uniqueMessages);
         displayContentsOfMap(contactMessagesMap);
 
         System.out.println("\n 6 задание");
-        Map<Contact, ArrayList<CallLog>> contactCallsMap = groupCallsByContact(uniqueContacts, uniqueСallogs);
+        Map<Contact, ArrayList<CallLog>> contactCallsMap = groupCallsByContact(uniqueContacts, uniqueСallLogs);
         displayContentsOfMap2(contactCallsMap);
 
         System.out.println("\n 7 задание, пункт a");
-        ArrayList<CallLog> contactCallLogs = findCallLogs(uniqueСallogs, contact2);
+        ArrayList<CallLog> contactCallLogs = findCallLogs(uniqueСallLogs, contact2);
         iterateCallLogCollection(contactCallLogs);
         // пункт b
         Pair<Contact, ArrayList<CallLog>> pair = new Pair<>(contact, findCallLogs(logs, contact));
         // пункты c и d
-        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairsWithCallLogs = findCallLogsForAllContacts(uniqueContacts, uniqueСallogs);
+        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairsWithCallLogs = findCallLogsForAllContacts(uniqueContacts, uniqueСallLogs);
         // пункт e
         sortCallLogPairsDescending(pairsWithCallLogs);
         // пункт f
@@ -166,11 +166,11 @@ public class Main {
         messagesDeque.addFirst(message17);
         System.out.println("А теперь?");
         System.out.println(messagesDeque.getFirst().getMessage());
-        messagesDeque.pollFirst().getMessage();
+        String stringMessage = messagesDeque.pollFirst().getMessage();
         System.out.println("Снова проверить какой элемент первый в деке");
         System.out.println(messagesDeque.getFirst().getMessage());
 
-        Deque<CallLog> callLogsDeque = new ArrayDeque<>(uniqueСallogs);
+        Deque<CallLog> callLogsDeque = new ArrayDeque<>(uniqueСallLogs);
         callLogsDeque.forEach(calllog -> System.out.println(calllog.getPhoneNumber()));
         System.out.println("Посмотреть первый элемент в деке: " + callLogsDeque.peek().getPhoneNumber());
         System.out.println("Добавляем новый элемент в конец: " + callLogsDeque.add(log15));
