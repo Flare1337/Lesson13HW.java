@@ -166,7 +166,7 @@ public class Main {
         messagesDeque.addFirst(message17);
         System.out.println("А теперь?");
         System.out.println(messagesDeque.getFirst().getMessage());
-        String stringMessage = messagesDeque.pollFirst().getMessage();
+        System.out.println("Удалить первый элемент дека, с \"головы\": " + messagesDeque.pollFirst().getMessage());
         System.out.println("Снова проверить какой элемент первый в деке");
         System.out.println(messagesDeque.getFirst().getMessage());
 
