@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class CallLog implements Comparable<CallLog> {
     private Instant date;
-    private long phoneNumber;
+    private String phoneNumber;
     private boolean isSuccessfulCall;
 
-    public CallLog(Instant date, long phoneNumber, boolean isSuccessfulCall) {
+    public CallLog(Instant date, String phoneNumber, boolean isSuccessfulCall) {
         this.date = date;
         this.phoneNumber = phoneNumber;
         this.isSuccessfulCall = isSuccessfulCall;
@@ -24,11 +24,11 @@ public class CallLog implements Comparable<CallLog> {
         this.date = date;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

@@ -6,19 +6,19 @@ import java.util.Collection;
 import java.util.Objects;
 
 public class Contact implements Comparable<Contact> {
-    private long phoneNumber;
+    private String phoneNumber;
     private String companyName;
 
-    public Contact(long phoneNumber, String companyName) {
+    public Contact(String phoneNumber, String companyName) {
         this.phoneNumber = phoneNumber;
         this.companyName = companyName;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -49,7 +49,7 @@ public class Contact implements Comparable<Contact> {
             return false;
         }
         Contact contact = (Contact) o;
-        return phoneNumber == contact.phoneNumber &&
+        return phoneNumber.equals(contact.phoneNumber) &&
                 companyName.equals(contact.companyName);
     }
 

@@ -1,7 +1,5 @@
 package src.company;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.time.Instant;
 import java.util.*;
 import java.util.function.Predicate;
@@ -10,52 +8,52 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        Message message = new Message("HELLow", "Dave", 857342346);
-        Message message2 = new Message("Darova, che po chem?", "Danya", 857342344);
-        Message message3 = new Message("Hey, what's up?", "Mike", 857342344);
-        Message message4 = new Message("Are you at home?", "Jake", 857342347);
-        Message message5 = new Message("I DON'T KNOW WHAT TO SAY", "Unknown", 857342345);
-        Message message6 = new Message("Huh, bye...", "John", 857342345);
-        Message message7 = new Message("Check it out!", "Alex", 857342345);
-        Message message8 = new Message("I can't get enough of this", "Mira", 857342346);
-        Message message9 = new Message("That's a deal! ", "Jane", 857342344);
-        Message message10 = new Message("Huh, bye...", "Brandon", 857342344);
-        Message message11 = new Message("Huh, bye...", "Milton", 857342345);
-        Message message12 = new Message("You won't do this, will you", "Crag", 857342347);
-        Message message13 = new Message("You won't do this, will you", "Crag", 857342347);
-        Message message14 = new Message("Huh, bye...", "John", 857342347);
-        Message message15 = new Message("Oh, if I were you!", "Michael", 857342347);
-        Message message16 = new Message("Are you sleeping?", "Shone", 857342346);
+        Message message = new Message("HELLow", "Dave", "857342346");
+        Message message2 = new Message("Darova, che po chem?", "Danya", "857342344");
+        Message message3 = new Message("Hey, what's up?", "Mike", "857342344");
+        Message message4 = new Message("Are you at home?", "Jake", "857342347");
+        Message message5 = new Message("I DON'T KNOW WHAT TO SAY", "Unknown", "857342345");
+        Message message6 = new Message("Huh, bye...", "John", "857342345");
+        Message message7 = new Message("Check it out!", "Alex", "857342345");
+        Message message8 = new Message("I can't get enough of this", "Mira", "857342346");
+        Message message9 = new Message("That's a deal! ", "Jane", "857342344");
+        Message message10 = new Message("Huh, bye...", "Brandon", "857342344");
+        Message message11 = new Message("Huh, bye...", "Milton", "857342345");
+        Message message12 = new Message("You won't do this, will you", "Crag", "857342347");
+        Message message13 = new Message("You won't do this, will you", "Crag", "857342347");
+        Message message14 = new Message("Huh, bye...", "John", "857342347");
+        Message message15 = new Message("Oh, if I were you!", "Michael", "857342347");
+        Message message16 = new Message("Are you sleeping?", "Shone", "857342346");
 
-        Message message17 = new Message("Just a little bit...", "Joel", 857342348);
+        Message message17 = new Message("Just a little bit...", "Joel", "857342348");
 
-        CallLog log = new CallLog(Instant.now(), 857342345, true);
-        CallLog log2 = new CallLog(Instant.now(), 857342346, true);
-        CallLog log3 = new CallLog(Instant.now(), 857342344, false);
-        CallLog log4 = new CallLog(Instant.now(), 857342347, false);
-        CallLog log5 = new CallLog(Instant.now(), 857342345, true);
-        CallLog log6 = new CallLog(Instant.now(), 857342346, false);
-        CallLog log7 = new CallLog(Instant.now(), 857342347, true);
-        CallLog log8 = new CallLog(Instant.now(), 857342347, false);
-        CallLog log9 = new CallLog(Instant.now(), 857342346, true);
-        CallLog log10 = new CallLog(Instant.now(), 857342346, false);
-        CallLog log11 = new CallLog(Instant.now(), 857342347, false);
-        CallLog log12 = new CallLog(Instant.now(), 857342345, true);
-        CallLog log13 = new CallLog(Instant.now(), 857342344, false);
-        CallLog log14 = new CallLog(Instant.now(), 857342347, true);
+        CallLog log = new CallLog(Instant.now(), "857342345", true);
+        CallLog log2 = new CallLog(Instant.now(), "857342346", true);
+        CallLog log3 = new CallLog(Instant.now(), "857342344", false);
+        CallLog log4 = new CallLog(Instant.now(), "857342347", false);
+        CallLog log5 = new CallLog(Instant.now(), "857342345", true);
+        CallLog log6 = new CallLog(Instant.now(), "857342346", false);
+        CallLog log7 = new CallLog(Instant.now(), "857342347", true);
+        CallLog log8 = new CallLog(Instant.now(), "857342347", false);
+        CallLog log9 = new CallLog(Instant.now(), "857342346", true);
+        CallLog log10 = new CallLog(Instant.now(), "857342346", false);
+        CallLog log11 = new CallLog(Instant.now(), "857342347", false);
+        CallLog log12 = new CallLog(Instant.now(), "857342345", true);
+        CallLog log13 = new CallLog(Instant.now(), "857342344", false);
+        CallLog log14 = new CallLog(Instant.now(), "857342347", true);
 
-        CallLog log15 = new CallLog(Instant.now(), 857342349, true);
+        CallLog log15 = new CallLog(Instant.now(), "857342349", true);
 
-        Contact contact = new Contact(857342344, "Coursera");
-        Contact contact2 = new Contact(857342345, "Google");
-        Contact contact3 = new Contact(857342346, "Yandex");
-        Contact contact4 = new Contact(857342347, "ZeroGravity");
-        Contact contact5 = new Contact(857342346, "Disney");
-        Contact contact6 = new Contact(857342347, "Roshen");
-        Contact contact7 = new Contact(857342347, "Roshen");
-        Contact contact8 = new Contact(857342347, "Roshen");
+        Contact contact = new Contact("857342344", "Coursera");
+        Contact contact2 = new Contact("857342345", "Google");
+        Contact contact3 = new Contact("857342346", "Yandex");
+        Contact contact4 = new Contact("857342347", "ZeroGravity");
+        Contact contact5 = new Contact("857342346", "Disney");
+        Contact contact6 = new Contact("857342347", "Roshen");
+        Contact contact7 = new Contact("857342347", "Roshen");
+        Contact contact8 = new Contact("857342347", "Roshen");
 
-        Contact contact9 = new Contact(857342347, "Microsoft");
+        Contact contact9 = new Contact("857342347", "Microsoft");
 
         List<Message> messages = new ArrayList<>();
         List<CallLog> logs = new ArrayList<>();
@@ -142,18 +140,11 @@ public class Main {
         displaySortedCallLogPairs(pairsWithCallLogs);
 
         System.out.println("\n 8 Задание");
-        ArrayList<Pair<Contact, ArrayList<Message>>> pairsWithMessages = findMessagesForAllContacts(uniqueContacts, uniqueMessages);
+        ArrayList<Pair<Contact, ArrayList<Message>>> pairsWithMessages = findMessagesForAllContactsVER2(uniqueContacts, uniqueMessages);
         sortMessagePairsDescending(pairsWithMessages);
         displaySortedMessagePairs(pairsWithMessages);
 
         System.out.println("\n 9 Задание");
-
-        Predicate<Boolean> predicate = new Predicate<Boolean>() {
-            @Override
-            public boolean test(Boolean aBoolean) {
-                return false;
-            }
-        };
 
         System.out.println("\n 10 Задание");
         Queue<Contact> contactsQueue = new PriorityQueue<>(uniqueContacts);
@@ -211,18 +202,21 @@ public class Main {
         messageCollection.forEach(message -> System.out.println("message = " + message.getMessage()));
     }
 
+
+
     public static Map<Contact, ArrayList<CallLog>> groupCallsByContact(HashSet<Contact> contacts, HashSet<CallLog> callLogs) {
         Map<Contact, ArrayList<CallLog>> contactMessagesMap = new HashMap<>();
         for (Contact contact : contacts) {
             contactMessagesMap.put(contact, new ArrayList<>());
             for (CallLog callLog : callLogs) {
-                if (contact.getPhoneNumber() == callLog.getPhoneNumber()) {
+                if (contact.getPhoneNumber().equals(callLog.getPhoneNumber())) {
                     contactMessagesMap.get(contact).add(callLog);
                 }
             }
         }
         return contactMessagesMap;
     }
+
 
     public static ArrayList<Pair<Contact, ArrayList<CallLog>>> findCallLogsForAllContacts(Collection<Contact> contacts,
                                                                                           Collection<CallLog> callLogs) {
@@ -231,7 +225,7 @@ public class Main {
             Pair<Contact, ArrayList<CallLog>> pair;
             pair = new Pair<>(contact, new ArrayList<>());
             for (CallLog callLog : callLogs) {
-                if (contact.getPhoneNumber() == callLog.getPhoneNumber()) {
+                if (contact.getPhoneNumber().equals(callLog.getPhoneNumber())) {
                     pair.getRight().add(callLog);
                 }
             }
@@ -240,14 +234,14 @@ public class Main {
         return pairs;
     }
 
-    public static ArrayList<Pair<Contact, ArrayList<Message>>> findMessagesForAllContacts(Collection<Contact> contacts,
+    public static ArrayList<Pair<Contact, ArrayList<Message>>> findMessagesForAllContactsVER1(Collection<Contact> contacts,
                                                                                           Collection<Message> messages) {
         ArrayList<Pair<Contact, ArrayList<Message>>> pairs = new ArrayList<>();
         for (Contact contact : contacts) {
             Pair<Contact, ArrayList<Message>> pair;
             pair = new Pair<>(contact, new ArrayList<>());
             for (Message message : messages) {
-                if (contact.getPhoneNumber() == message.getPhoneNumber()) {
+                if (contact.getPhoneNumber().equals(message.getPhoneNumber())) {
                     pair.getRight().add(message);
                 }
             }
@@ -256,11 +250,32 @@ public class Main {
         return pairs;
     }
 
+    public static ArrayList<Pair<Contact, ArrayList<Message>>> findMessagesForAllContactsVER2(Collection<Contact> contacts,
+                                                                                              Collection<Message> messages) {
+        ArrayList<Pair<Contact, ArrayList<Message>>> pairs = new ArrayList<>();
+        for (Contact contact : contacts) {
+            pairs.add(findMessagesForContact(contact, messages));
+        }
+        return pairs;
+    }
+
+    public static Pair<Contact, ArrayList<Message>> findMessagesForContact(Contact contact,
+                                                                           Collection<Message> messages) {
+        Pair<Contact, ArrayList<Message>> pair = new Pair<>(contact, new ArrayList<>());
+        Predicate<Message> messagePredicate = message -> message.getPhoneNumber().equals(contact.getPhoneNumber());
+            for (Message message : messages) {
+                if (messagePredicate.test(message)) {
+                    pair.getRight().add(message);
+                }
+            }
+        return pair;
+    }
+
     public static ArrayList<CallLog> findCallLogs(Collection<CallLog> callLogs, Contact contact) {
         ArrayList<CallLog> resultLogs = new ArrayList<>();
 
         for (CallLog callLog : callLogs) {
-            if (callLog.getPhoneNumber() == contact.getPhoneNumber()) {
+            if (callLog.getPhoneNumber().equals(contact.getPhoneNumber())) {
                 resultLogs.add(callLog);
             }
         }
@@ -310,7 +325,7 @@ public class Main {
         for (Contact contact : contacts) {
             contactMessagesMap.put(contact, new ArrayList<>());
             for (Message message : messages) {
-                if (contact.getPhoneNumber() == message.getPhoneNumber()) {
+                if (contact.getPhoneNumber().equals(message.getPhoneNumber())) {
                     contactMessagesMap.get(contact).add(message);
                 }
             }

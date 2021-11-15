@@ -7,9 +7,9 @@ import java.util.Objects;
 public class Message implements Comparable<Message> {
     private String message;
     private String name;
-    private long phoneNumber;
+    private String phoneNumber;
 
-    public Message(String message, String name, long phoneNumber) {
+    public Message(String message, String name, String phoneNumber) {
         this.message = message;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -41,11 +41,11 @@ public class Message implements Comparable<Message> {
         return messages;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
