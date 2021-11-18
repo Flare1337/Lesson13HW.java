@@ -129,22 +129,31 @@ public class Main {
 
         System.out.println("\n 7 задание, пункт a");
         ArrayList<CallLog> contactCallLogs = findCallLogs(uniqueСallLogs, contact2);
-        iterateCallLogCollection(contactCallLogs);
+        showCallLogCollection(contactCallLogs);
         // пункт b
         Pair<Contact, ArrayList<CallLog>> pair = new Pair<>(contact, findCallLogs(logs, contact));
         // пункты c и d
-        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairsWithCallLogs = findCallLogsForAllContacts(uniqueContacts, uniqueСallLogs);
+        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairsWithCallLogs = findCallLogsForAllContactsVER1(uniqueContacts, uniqueСallLogs);
         // пункт e
         sortCallLogPairsDescending(pairsWithCallLogs);
         // пункт f
         displaySortedCallLogPairs(pairsWithCallLogs);
 
         System.out.println("\n 8 Задание");
-        ArrayList<Pair<Contact, ArrayList<Message>>> pairsWithMessages = findMessagesForAllContactsVER2(uniqueContacts, uniqueMessages);
+        ArrayList<Pair<Contact, ArrayList<Message>>> pairsWithMessages = findMessagesForAllContactsVER1(uniqueContacts, uniqueMessages);
         sortMessagePairsDescending(pairsWithMessages);
         displaySortedMessagePairs(pairsWithMessages);
 
+        // Тут они не сортированы, но по заданию это вроде как и не требуется
         System.out.println("\n 9 Задание");
+        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairsWithCallLogs2 = findCallLogsForAllContactsVER2(uniqueContacts, uniqueСallLogs);
+        ArrayList<Pair<Contact, ArrayList<Message>>> pairsWithMessages2 = findMessagesForAllContactsVER2(uniqueContacts, uniqueMessages);
+        displaySortedCallLogPairs(pairsWithCallLogs2);
+        displaySortedMessagePairs(pairsWithMessages2);
+        HashSet<CallLog> filteredBySuccess = getCallLogsFilteredByText(uniqueСallLogs, log);
+        HashSet<Contact> filteredByPhone = getContactsFilteredByText(uniqueContacts, contact);
+        HashSet<Message> filteredByContents = getMessagesFilteredByText(uniqueMessages, message);
+        showFilteredCollections(filteredByContents, filteredByPhone, filteredBySuccess);
 
         System.out.println("\n 10 Задание");
         Queue<Contact> contactsQueue = new PriorityQueue<>(uniqueContacts);
@@ -202,7 +211,38 @@ public class Main {
         messageCollection.forEach(message -> System.out.println("message = " + message.getMessage()));
     }
 
+    public static HashSet<Message> getMessagesFilteredByText(HashSet<Message> messages, Message inputMessage) {
+        Predicate<Message> messagePredicate = message -> message.getMessage().length() > 15;
+        HashSet<Message> messageHashSet = new HashSet<>();
+        for (Message message : messages) {
+            if (messagePredicate.test(message)) {
+                messageHashSet.add(message);
+            }
+        }
+        return messageHashSet;
+    }
 
+    public static HashSet<Contact> getContactsFilteredByText(HashSet<Contact> contacts, Contact inputContact) {
+        Predicate<Contact> messagePredicate = contact -> !contact.getPhoneNumber().equals(inputContact.getPhoneNumber());
+        HashSet<Contact> contactHashSet = new HashSet<>();
+        for (Contact contact : contacts) {
+            if (messagePredicate.test(contact)) {
+                contactHashSet.add(contact);
+            }
+        }
+        return contactHashSet;
+    }
+
+    public static HashSet<CallLog> getCallLogsFilteredByText(HashSet<CallLog> callLogs, CallLog inputCallLog) {
+        Predicate<CallLog> messagePredicate = callLog -> callLog.isSuccessfulCall() == inputCallLog.isSuccessfulCall();
+        HashSet<CallLog> messageHashSet = new HashSet<>();
+        for (CallLog callLog : callLogs) {
+            if (messagePredicate.test(callLog)) {
+                messageHashSet.add(callLog);
+            }
+        }
+        return messageHashSet;
+    }
 
     public static Map<Contact, ArrayList<CallLog>> groupCallsByContact(HashSet<Contact> contacts, HashSet<CallLog> callLogs) {
         Map<Contact, ArrayList<CallLog>> contactMessagesMap = new HashMap<>();
@@ -218,8 +258,8 @@ public class Main {
     }
 
 
-    public static ArrayList<Pair<Contact, ArrayList<CallLog>>> findCallLogsForAllContacts(Collection<Contact> contacts,
-                                                                                          Collection<CallLog> callLogs) {
+    public static ArrayList<Pair<Contact, ArrayList<CallLog>>> findCallLogsForAllContactsVER1(Collection<Contact> contacts,
+                                                                                              Collection<CallLog> callLogs) {
         ArrayList<Pair<Contact, ArrayList<CallLog>>> pairs = new ArrayList<>();
         for (Contact contact : contacts) {
             Pair<Contact, ArrayList<CallLog>> pair;
@@ -234,8 +274,35 @@ public class Main {
         return pairs;
     }
 
+    public static ArrayList<Pair<Contact, ArrayList<CallLog>>> findCallLogsForAllContactsVER2(Collection<Contact> contacts,
+                                                                                              Collection<CallLog> callLogs) {
+        ArrayList<Pair<Contact, ArrayList<CallLog>>> pairs = new ArrayList<>();
+        for (Contact contact : contacts) {
+            pairs.add(findCallLogsForContact(contact, callLogs));
+        }
+        return pairs;
+    }
+
+    public static Pair<Contact, ArrayList<CallLog>> findCallLogsForContact(Contact contact,
+                                                                           Collection<CallLog> callLogs) {
+        Pair<Contact, ArrayList<CallLog>> pair = new Pair<>(contact, new ArrayList<>());
+        Predicate<CallLog> messagePredicate = callLog -> callLog.getPhoneNumber().equals(contact.getPhoneNumber());
+        for (CallLog callLog : callLogs) {
+            if (messagePredicate.test(callLog)) {
+                pair.getRight().add(callLog);
+            }
+        }
+        return pair;
+    }
+
+    private static void swapCallLogPair(ArrayList<Pair<Contact, ArrayList<CallLog>>> pairs, int one, int two) {
+        Pair<Contact, ArrayList<CallLog>> pair = pairs.get(one);
+        pairs.add(one, pairs.get(two));
+        pairs.add(two, pair);
+    }
+
     public static ArrayList<Pair<Contact, ArrayList<Message>>> findMessagesForAllContactsVER1(Collection<Contact> contacts,
-                                                                                          Collection<Message> messages) {
+                                                                                              Collection<Message> messages) {
         ArrayList<Pair<Contact, ArrayList<Message>>> pairs = new ArrayList<>();
         for (Contact contact : contacts) {
             Pair<Contact, ArrayList<Message>> pair;
@@ -269,6 +336,12 @@ public class Main {
                 }
             }
         return pair;
+    }
+
+    private static void swapMessagePair(ArrayList<Pair<Contact, ArrayList<Message>>> pairs, int one, int two) {
+        Pair<Contact, ArrayList<Message>> pair = pairs.get(one);
+        pairs.add(one, pairs.get(two));
+        pairs.add(two, pair);
     }
 
     public static ArrayList<CallLog> findCallLogs(Collection<CallLog> callLogs, Contact contact) {
@@ -305,19 +378,6 @@ public class Main {
         }
         return pairs;
     }
-
-    private static void swapCallLogPair(ArrayList<Pair<Contact, ArrayList<CallLog>>> pairs, int one, int two) {
-        Pair<Contact, ArrayList<CallLog>> pair = pairs.get(one);
-        pairs.add(one, pairs.get(two));
-        pairs.add(two, pair);
-    }
-
-    private static void swapMessagePair(ArrayList<Pair<Contact, ArrayList<Message>>> pairs, int one, int two) {
-        Pair<Contact, ArrayList<Message>> pair = pairs.get(one);
-        pairs.add(one, pairs.get(two));
-        pairs.add(two, pair);
-    }
-
 
     public static Map<Contact, ArrayList<Message>> groupMessagesByContact(HashSet<Contact> contacts,
                                                                           HashSet<Message> messages) {
@@ -376,12 +436,26 @@ public class Main {
         return false;
     }
 
-    public static void iterateCallLogCollection(Collection<CallLog> collection) {
+    public static void showCallLogCollection(Collection<CallLog> collection) {
         for (CallLog callLog : collection) {
             System.out.println("Phone number of a call: " + callLog.getPhoneNumber() + "\n" +
                     "Is successful call: " + callLog.isSuccessfulCall() + "\n" +
                     "Call date: " + callLog.getDate());
             System.out.println();
+        }
+    }
+
+    public static void showFilteredCollections(HashSet<Message> messages,
+                                               HashSet<Contact> contacts,
+                                               HashSet<CallLog> callLogs) {
+        for (Message message : messages) {
+            System.out.println(message.getMessage());
+        }
+        for (Contact contact : contacts) {
+            System.out.println(contact.getPhoneNumber());
+        }
+        for (CallLog callLog : callLogs) {
+            System.out.println(callLog.isSuccessfulCall());
         }
     }
 }

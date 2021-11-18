@@ -51,15 +51,15 @@ public class CallLog implements Comparable<CallLog> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        CallLog callLog = (CallLog) o;
-        return phoneNumber == callLog.phoneNumber &&
+        CallLog callLog = (CallLog) obj;
+        return phoneNumber.equals(callLog.phoneNumber) &&
                 isSuccessfulCall == callLog.isSuccessfulCall &&
                 date.equals(callLog.date);
     }

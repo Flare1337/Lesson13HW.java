@@ -58,7 +58,7 @@ public class Message implements Comparable<Message> {
             return false;
         }
         Message message1 = (Message) o;
-        return phoneNumber == message1.phoneNumber &&
+        return phoneNumber.equals(message1.phoneNumber) &&
                 message.equals(message1.message) &&
                 name.equals(message1.name);
     }
